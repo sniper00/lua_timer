@@ -27,7 +27,7 @@ require 'timer.c'
 -- 一般一个lua state 只需要一个全局的 timer对象
 timer = Timer.new()
 
--- **call timer:update in your main loop**
+-- **call timer:Update in your main loop**
 
 --example 一秒后超时的计时器
     timer:ExpireOnce(1000, function()
