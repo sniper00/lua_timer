@@ -1,3 +1,4 @@
+
 # lua_timer
 a cpp  implement lua timer
 
@@ -22,6 +23,7 @@ you will get timer dynamic library at bin path.
 # Use
 
 ```lua
+require 'timer.c'
 -- 一般一个lua state 只需要一个全局的 timer对象
 timer = Timer.new()
 
