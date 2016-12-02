@@ -3,32 +3,16 @@
 .NOTPARALLEL:
 
 ifndef config
-  config=debug_win32
+  config=debug_linux
 endif
 
 ifndef verbose
   SILENT = @
 endif
 
-ifeq ($(config),debug_win32)
-  lua53_config = debug_win32
-  timer_config = debug_win32
-endif
-ifeq ($(config),debug_x64)
-  lua53_config = debug_x64
-  timer_config = debug_x64
-endif
 ifeq ($(config),debug_linux)
   lua53_config = debug_linux
   timer_config = debug_linux
-endif
-ifeq ($(config),release_win32)
-  lua53_config = release_win32
-  timer_config = release_win32
-endif
-ifeq ($(config),release_x64)
-  lua53_config = release_x64
-  timer_config = release_x64
 endif
 ifeq ($(config),release_linux)
   lua53_config = release_linux
@@ -61,11 +45,7 @@ help:
 	@echo "Usage: make [config=name] [target]"
 	@echo ""
 	@echo "CONFIGURATIONS:"
-	@echo "  debug_win32"
-	@echo "  debug_x64"
 	@echo "  debug_linux"
-	@echo "  release_win32"
-	@echo "  release_x64"
 	@echo "  release_linux"
 	@echo ""
 	@echo "TARGETS:"
