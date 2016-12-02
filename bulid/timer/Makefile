@@ -69,7 +69,7 @@ ifeq ($(config),debug_linux)
   TARGETDIR = ../../bin/Debug
   TARGET = $(TARGETDIR)/timer.so
   OBJDIR = obj/Linux/Debug
-  DEFINES += -DDEBUG -D_USRDLL
+  DEFINES += -DDEBUG
   INCLUDES += -I../../timer -I../../lua53
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
@@ -150,7 +150,7 @@ ifeq ($(config),release_linux)
   TARGETDIR = ../../bin/Release
   TARGET = $(TARGETDIR)/timer.so
   OBJDIR = obj/Linux/Release
-  DEFINES += -DNDEBUG -D_USRDLL
+  DEFINES += -DNDEBUG
   INCLUDES += -I../../timer -I../../lua53
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
