@@ -1,5 +1,5 @@
 # lua_timer
-一个C++实现的计时器
+一个C++实现的计时器(wheel), 编译位动态库 提供给lua使用
 
 # Bulid
 默认需要链接lua 5.3版本的动态库，需要把lua源码放在lua文件夹中。
@@ -25,7 +25,7 @@ you will get timer dynamic library at bin path.
 ```lua
 require 'timer.c'
 -- 一般一个lua state 只需要一个全局的 timer对象
-timer = Timer.new()
+timer = Timer.new() --创建timer对象
 
 --example 一秒后超时的计时器
     timer:ExpireOnce(1000, function()
