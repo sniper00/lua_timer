@@ -1,11 +1,9 @@
-
 # lua_timer
-a cpp  implement lua timer
+一个C++实现的计时器
 
 # Bulid
-
-put  you lua source files in lua53 path。
-保证你的 lua动态库 名字为 lua53.so (lua53.dll), 如果不是，
+默认需要链接lua 5.3版本的动态库，需要把lua源码放在lua文件夹中。
+保证你的 lua动态库 名字为 lua53.so (lua53.dll), 如果不是,
 你就要自己写makefile, 注意 g++ 添加 std14 flag
 
 **The project use of C++11/14 features**
@@ -22,12 +20,12 @@ you will get timer dynamic library at bin path.
 
 # Use
 
+**call timer:Update() in your main loop**
+
 ```lua
 require 'timer.c'
 -- 一般一个lua state 只需要一个全局的 timer对象
 timer = Timer.new()
-
--- **call timer:Update in your main loop**
 
 --example 一秒后超时的计时器
     timer:ExpireOnce(1000, function()
@@ -55,6 +53,3 @@ timer = Timer.new()
 -- timer:StartAllTimer()暂停所有计时器
 
 ```
-
- 
- 
