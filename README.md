@@ -28,7 +28,7 @@ require 'timer.c'
 timer = Timer.new() --创建timer对象
 
 --example 一秒后超时的计时器
-    timer:ExpireOnce(1000, function()
+    timer:ExpiredOnce(1000, function()
         print("timer expired")
     end)
 
