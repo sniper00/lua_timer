@@ -181,11 +181,15 @@ namespace moon
 			if (iter != imp_->timers_.end())
 			{
 				auto tcx = iter->second;
-				imp_->timers_.erase(id);
-				if (!tcx->getRemoved())
+					if (!tcx->getRemoved())
 				{
 					tcx->expired();
+				}
 
+				imp_->timers_.erase(id);
+
+				if (!tcx->getRemoved())
+				{
 					if (tcx->getRepeatTimes() == -1)
 					{
 						add_new_timer(tcx);
@@ -209,7 +213,7 @@ namespace moon
 			diff = (diff >= 0) ? diff : 0;
 
 			auto offset = diff%PRECISION;
-			//У��
+			//Ð£Õý
 			if (offset > 0)
 			{
 				diff += PRECISION;
