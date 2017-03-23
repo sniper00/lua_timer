@@ -19,32 +19,32 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8F22E30F-FB36-0BC1-C4B8-AE20308C07F2}</ProjectGuid>
+    <ProjectGuid>{C78D880B-3397-887C-BC12-9F7C281B947C}</ProjectGuid>
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>lua53</RootNamespace>
+    <RootNamespace>lua</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v140</PlatformToolset>
@@ -69,67 +69,67 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\bin\Debug\</OutDir>
     <IntDir>obj\Win32\Debug\</IntDir>
-    <TargetName>lua53</TargetName>
-    <TargetExt>.dll</TargetExt>
+    <TargetName>lua</TargetName>
+    <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\bin\Debug\</OutDir>
     <IntDir>obj\x64\Debug\</IntDir>
-    <TargetName>lua53</TargetName>
-    <TargetExt>.dll</TargetExt>
+    <TargetName>lua</TargetName>
+    <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\bin\Release\</OutDir>
     <IntDir>obj\Win32\Release\</IntDir>
-    <TargetName>lua53</TargetName>
-    <TargetExt>.dll</TargetExt>
+    <TargetName>lua</TargetName>
+    <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\bin\Release\</OutDir>
     <IntDir>obj\x64\Release\</IntDir>
-    <TargetName>lua53</TargetName>
-    <TargetExt>.dll</TargetExt>
+    <TargetName>lua</TargetName>
+    <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>DEBUG;LUA_BUILD_AS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\lua53;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImportLibrary>..\..\bin\Debug\lua53.lib</ImportLibrary>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>DEBUG;LUA_BUILD_AS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\lua53;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImportLibrary>..\..\bin\Debug\lua53.lib</ImportLibrary>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NDEBUG;LUA_BUILD_AS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\lua53;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -139,18 +139,18 @@
       <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <ImportLibrary>..\..\bin\Release\lua53.lib</ImportLibrary>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NDEBUG;LUA_BUILD_AS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\lua53;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -160,76 +160,20 @@
       <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <ImportLibrary>..\..\bin\Release\lua53.lib</ImportLibrary>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\lua53\lapi.h" />
-    <ClInclude Include="..\..\lua53\lauxlib.h" />
-    <ClInclude Include="..\..\lua53\lcode.h" />
-    <ClInclude Include="..\..\lua53\lctype.h" />
-    <ClInclude Include="..\..\lua53\ldebug.h" />
-    <ClInclude Include="..\..\lua53\ldo.h" />
-    <ClInclude Include="..\..\lua53\lfunc.h" />
-    <ClInclude Include="..\..\lua53\lgc.h" />
-    <ClInclude Include="..\..\lua53\llex.h" />
-    <ClInclude Include="..\..\lua53\llimits.h" />
-    <ClInclude Include="..\..\lua53\lmem.h" />
-    <ClInclude Include="..\..\lua53\lobject.h" />
-    <ClInclude Include="..\..\lua53\lopcodes.h" />
-    <ClInclude Include="..\..\lua53\lparser.h" />
-    <ClInclude Include="..\..\lua53\lprefix.h" />
-    <ClInclude Include="..\..\lua53\lstate.h" />
-    <ClInclude Include="..\..\lua53\lstring.h" />
-    <ClInclude Include="..\..\lua53\ltable.h" />
-    <ClInclude Include="..\..\lua53\ltm.h" />
-    <ClInclude Include="..\..\lua53\lua.h" />
-    <ClInclude Include="..\..\lua53\luaconf.h" />
-    <ClInclude Include="..\..\lua53\lualib.h" />
-    <ClInclude Include="..\..\lua53\lundump.h" />
-    <ClInclude Include="..\..\lua53\lvm.h" />
-    <ClInclude Include="..\..\lua53\lzio.h" />
-    <ClInclude Include="..\..\timer\lua_timer.h" />
-    <ClInclude Include="..\..\timer\timer.h" />
+    <ClCompile Include="..\..\lua53\lua.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\lua53\lapi.c" />
-    <ClCompile Include="..\..\lua53\lauxlib.c" />
-    <ClCompile Include="..\..\lua53\lbaselib.c" />
-    <ClCompile Include="..\..\lua53\lbitlib.c" />
-    <ClCompile Include="..\..\lua53\lcode.c" />
-    <ClCompile Include="..\..\lua53\lcorolib.c" />
-    <ClCompile Include="..\..\lua53\lctype.c" />
-    <ClCompile Include="..\..\lua53\ldblib.c" />
-    <ClCompile Include="..\..\lua53\ldebug.c" />
-    <ClCompile Include="..\..\lua53\ldo.c" />
-    <ClCompile Include="..\..\lua53\ldump.c" />
-    <ClCompile Include="..\..\lua53\lfunc.c" />
-    <ClCompile Include="..\..\lua53\lgc.c" />
-    <ClCompile Include="..\..\lua53\linit.c" />
-    <ClCompile Include="..\..\lua53\liolib.c" />
-    <ClCompile Include="..\..\lua53\llex.c" />
-    <ClCompile Include="..\..\lua53\lmathlib.c" />
-    <ClCompile Include="..\..\lua53\lmem.c" />
-    <ClCompile Include="..\..\lua53\loadlib.c" />
-    <ClCompile Include="..\..\lua53\lobject.c" />
-    <ClCompile Include="..\..\lua53\lopcodes.c" />
-    <ClCompile Include="..\..\lua53\loslib.c" />
-    <ClCompile Include="..\..\lua53\lparser.c" />
-    <ClCompile Include="..\..\lua53\lstate.c" />
-    <ClCompile Include="..\..\lua53\lstring.c" />
-    <ClCompile Include="..\..\lua53\lstrlib.c" />
-    <ClCompile Include="..\..\lua53\ltable.c" />
-    <ClCompile Include="..\..\lua53\ltablib.c" />
-    <ClCompile Include="..\..\lua53\ltm.c" />
-    <ClCompile Include="..\..\lua53\lundump.c" />
-    <ClCompile Include="..\..\lua53\lutf8lib.c" />
-    <ClCompile Include="..\..\lua53\lvm.c" />
-    <ClCompile Include="..\..\lua53\lzio.c" />
+    <ProjectReference Include="..\lua53\lua53.vcxproj">
+      <Project>{8F22E30F-FB36-0BC1-C4B8-AE20308C07F2}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

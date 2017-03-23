@@ -12,14 +12,16 @@ endif
 
 ifeq ($(config),debug_linux)
   lua53_config = debug_linux
+  lua_config = debug_linux
   timer_config = debug_linux
 endif
 ifeq ($(config),release_linux)
   lua53_config = release_linux
+  lua_config = release_linux
   timer_config = release_linux
 endif
 
-PROJECTS := lua53 timer
+PROJECTS := lua53 lua timer
 
 .PHONY: all clean help $(PROJECTS) 
 
@@ -31,6 +33,12 @@ ifneq (,$(lua53_config))
 	@${MAKE} --no-print-directory -C lua53 -f Makefile config=$(lua53_config)
 endif
 
+lua: lua53
+ifneq (,$(lua_config))
+	@echo "==== Building lua ($(lua_config)) ===="
+	@${MAKE} --no-print-directory -C lua -f Makefile config=$(lua_config)
+endif
+
 timer: lua53
 ifneq (,$(timer_config))
 	@echo "==== Building timer ($(timer_config)) ===="
@@ -39,6 +47,7 @@ endif
 
 clean:
 	@${MAKE} --no-print-directory -C lua53 -f Makefile clean
+	@${MAKE} --no-print-directory -C lua -f Makefile clean
 	@${MAKE} --no-print-directory -C timer -f Makefile clean
 
 help:
@@ -52,6 +61,7 @@ help:
 	@echo "   all (default)"
 	@echo "   clean"
 	@echo "   lua53"
+	@echo "   lua"
 	@echo "   timer"
 	@echo ""
 	@echo "For more information, see http://industriousone.com/premake/quick-start"

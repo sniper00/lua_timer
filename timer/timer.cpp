@@ -181,7 +181,8 @@ namespace moon
 			if (iter != imp_->timers_.end())
 			{
 				auto tcx = iter->second;
-					if (!tcx->getRemoved())
+
+				if (!tcx->getRemoved())
 				{
 					tcx->expired();
 				}
@@ -213,7 +214,7 @@ namespace moon
 			diff = (diff >= 0) ? diff : 0;
 
 			auto offset = diff%PRECISION;
-			//Ð£Õý
+			//У��
 			if (offset > 0)
 			{
 				diff += PRECISION;
