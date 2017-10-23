@@ -13,18 +13,18 @@ endif
 ifeq ($(config),debug_linux)
   RESCOMP = windres
   TARGETDIR = ../../bin/Debug
-  TARGET = $(TARGETDIR)/liblua53.so
-  OBJDIR = obj/Linux/Debug
-  DEFINES += -DDEBUG -DLUA_USE_LINUX
+  TARGET = $(TARGETDIR)/luac
+  OBJDIR = ../../obj/luac/Linux_Debug
+  DEFINES += -DDEBUG
   INCLUDES += -I../../lua53
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g -fPIC
+  ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CFLAGS) -std=c++14
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += -ldl
+  LIBS += -Wl,--start-group -ldl -lm -Wl,--end-group
   LDDEPS +=
-  ALL_LDFLAGS += $(LDFLAGS) -shared
+  ALL_LDFLAGS += $(LDFLAGS)
   LINKCMD = $(CC) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -40,18 +40,18 @@ endif
 ifeq ($(config),release_linux)
   RESCOMP = windres
   TARGETDIR = ../../bin/Release
-  TARGET = $(TARGETDIR)/liblua53.so
-  OBJDIR = obj/Linux/Release
-  DEFINES += -DNDEBUG -DLUA_USE_LINUX
+  TARGET = $(TARGETDIR)/luac
+  OBJDIR = ../../obj/luac/Linux_Release
+  DEFINES += -DNDEBUG
   INCLUDES += -I../../lua53
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2 -fPIC
+  ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CFLAGS) -std=c++14
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += -ldl
+  LIBS += -Wl,--start-group -ldl -lm -Wl,--end-group
   LDDEPS +=
-  ALL_LDFLAGS += $(LDFLAGS) -s -shared
+  ALL_LDFLAGS += $(LDFLAGS) -s
   LINKCMD = $(CC) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -94,6 +94,7 @@ OBJECTS := \
 	$(OBJDIR)/ltable.o \
 	$(OBJDIR)/ltablib.o \
 	$(OBJDIR)/ltm.o \
+	$(OBJDIR)/luac.o \
 	$(OBJDIR)/lundump.o \
 	$(OBJDIR)/lutf8lib.o \
 	$(OBJDIR)/lvm.o \
@@ -112,7 +113,7 @@ ifeq (/bin,$(findstring /bin,$(SHELL)))
 endif
 
 $(TARGET): $(GCH) ${CUSTOMFILES} $(OBJECTS) $(LDDEPS) $(RESOURCES)
-	@echo Linking lua53
+	@echo Linking luac
 	$(SILENT) $(LINKCMD)
 	$(POSTBUILDCMDS)
 
@@ -133,7 +134,7 @@ else
 endif
 
 clean:
-	@echo Cleaning lua53
+	@echo Cleaning luac
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 	$(SILENT) rm -rf $(OBJDIR)
@@ -240,6 +241,9 @@ $(OBJDIR)/ltablib.o: ../../lua53/ltablib.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/ltm.o: ../../lua53/ltm.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/luac.o: ../../lua53/luac.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/lundump.o: ../../lua53/lundump.c

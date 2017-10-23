@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="lua53">
+      <UniqueIdentifier>{8F22E30F-FB36-0BC1-C4B8-AE20308C07F2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="timer">
+      <UniqueIdentifier>{868B6D10-F29F-95C1-BB21-392127F591F2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\lua53\lapi.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lauxlib.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lcode.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lctype.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\ldebug.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\ldo.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lfunc.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lgc.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\llex.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\llimits.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lmem.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lobject.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lopcodes.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lparser.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lprefix.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lstate.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lstring.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\ltable.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\ltm.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lua.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\luaconf.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lualib.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lundump.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lvm.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua53\lzio.h">
+      <Filter>lua53</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\timer\lua_timer.h">
+      <Filter>timer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\lua53\lapi.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lauxlib.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lbaselib.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lbitlib.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lcode.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lcorolib.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lctype.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\ldblib.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\ldebug.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\ldo.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\ldump.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lfunc.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lgc.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\linit.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\liolib.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\llex.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lmathlib.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lmem.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\loadlib.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lobject.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lopcodes.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\loslib.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lparser.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lstate.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lstring.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lstrlib.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\ltable.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\ltablib.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\ltm.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lundump.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lutf8lib.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lvm.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua53\lzio.c">
+      <Filter>lua53</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -14,7 +14,7 @@ ifeq ($(config),debug_linux)
   RESCOMP = windres
   TARGETDIR = ../../bin/Debug
   TARGET = $(TARGETDIR)/lua
-  OBJDIR = obj/Linux/Debug
+  OBJDIR = ../../obj/lua/Linux_Debug
   DEFINES += -DDEBUG
   INCLUDES += -I../../lua53
   FORCE_INCLUDE +=
@@ -22,9 +22,9 @@ ifeq ($(config),debug_linux)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CFLAGS) -std=c++14
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += -llua53
+  LIBS += -Wl,--start-group -llua53 -ldl -lm -Wl,--end-group
   LDDEPS += ../../bin/Debug/liblua53.so
-  ALL_LDFLAGS += $(LDFLAGS) -L../../bin/Debug
+  ALL_LDFLAGS += $(LDFLAGS) -L../../bin/Debug -Wl,-rpath=./
   LINKCMD = $(CC) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -41,7 +41,7 @@ ifeq ($(config),release_linux)
   RESCOMP = windres
   TARGETDIR = ../../bin/Release
   TARGET = $(TARGETDIR)/lua
-  OBJDIR = obj/Linux/Release
+  OBJDIR = ../../obj/lua/Linux_Release
   DEFINES += -DNDEBUG
   INCLUDES += -I../../lua53
   FORCE_INCLUDE +=
@@ -49,9 +49,9 @@ ifeq ($(config),release_linux)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CFLAGS) -std=c++14
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += -llua53
+  LIBS += -Wl,--start-group -llua53 -ldl -lm -Wl,--end-group
   LDDEPS += ../../bin/Release/liblua53.so
-  ALL_LDFLAGS += $(LDFLAGS) -L../../bin/Release -s
+  ALL_LDFLAGS += $(LDFLAGS) -L../../bin/Release -s -Wl,-rpath=./
   LINKCMD = $(CC) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef

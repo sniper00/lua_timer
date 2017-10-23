@@ -14,7 +14,7 @@ ifeq ($(config),debug_linux)
   RESCOMP = windres
   TARGETDIR = ../../bin/Debug
   TARGET = $(TARGETDIR)/timer.so
-  OBJDIR = obj/Linux/Debug
+  OBJDIR = ../../obj/timer/Linux_Debug
   DEFINES += -DDEBUG
   INCLUDES += -I../../timer -I../../lua53
   FORCE_INCLUDE +=
@@ -41,7 +41,7 @@ ifeq ($(config),release_linux)
   RESCOMP = windres
   TARGETDIR = ../../bin/Release
   TARGET = $(TARGETDIR)/timer.so
-  OBJDIR = obj/Linux/Release
+  OBJDIR = ../../obj/timer/Linux_Release
   DEFINES += -DNDEBUG
   INCLUDES += -I../../timer -I../../lua53
   FORCE_INCLUDE +=
@@ -66,7 +66,6 @@ endif
 
 OBJECTS := \
 	$(OBJDIR)/lua_timer.o \
-	$(OBJDIR)/timer.o \
 
 RESOURCES := \
 
@@ -125,9 +124,6 @@ $(GCH): $(PCH)
 endif
 
 $(OBJDIR)/lua_timer.o: ../../timer/lua_timer.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
-$(OBJDIR)/timer.o: ../../timer/timer.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 

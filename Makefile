@@ -13,15 +13,17 @@ endif
 ifeq ($(config),debug_linux)
   lua53_config = debug_linux
   lua_config = debug_linux
+  luac_config = debug_linux
   timer_config = debug_linux
 endif
 ifeq ($(config),release_linux)
   lua53_config = release_linux
   lua_config = release_linux
+  luac_config = release_linux
   timer_config = release_linux
 endif
 
-PROJECTS := lua53 lua timer
+PROJECTS := lua53 lua luac timer
 
 .PHONY: all clean help $(PROJECTS) 
 
@@ -30,25 +32,32 @@ all: $(PROJECTS)
 lua53:
 ifneq (,$(lua53_config))
 	@echo "==== Building lua53 ($(lua53_config)) ===="
-	@${MAKE} --no-print-directory -C lua53 -f Makefile config=$(lua53_config)
+	@${MAKE} --no-print-directory -C build/lua53 -f Makefile config=$(lua53_config)
 endif
 
 lua: lua53
 ifneq (,$(lua_config))
 	@echo "==== Building lua ($(lua_config)) ===="
-	@${MAKE} --no-print-directory -C lua -f Makefile config=$(lua_config)
+	@${MAKE} --no-print-directory -C build/lua -f Makefile config=$(lua_config)
+endif
+
+luac:
+ifneq (,$(luac_config))
+	@echo "==== Building luac ($(luac_config)) ===="
+	@${MAKE} --no-print-directory -C build/luac -f Makefile config=$(luac_config)
 endif
 
 timer: lua53
 ifneq (,$(timer_config))
 	@echo "==== Building timer ($(timer_config)) ===="
-	@${MAKE} --no-print-directory -C timer -f Makefile config=$(timer_config)
+	@${MAKE} --no-print-directory -C build/timer -f Makefile config=$(timer_config)
 endif
 
 clean:
-	@${MAKE} --no-print-directory -C lua53 -f Makefile clean
-	@${MAKE} --no-print-directory -C lua -f Makefile clean
-	@${MAKE} --no-print-directory -C timer -f Makefile clean
+	@${MAKE} --no-print-directory -C build/lua53 -f Makefile clean
+	@${MAKE} --no-print-directory -C build/lua -f Makefile clean
+	@${MAKE} --no-print-directory -C build/luac -f Makefile clean
+	@${MAKE} --no-print-directory -C build/timer -f Makefile clean
 
 help:
 	@echo "Usage: make [config=name] [target]"
@@ -62,6 +71,7 @@ help:
 	@echo "   clean"
 	@echo "   lua53"
 	@echo "   lua"
+	@echo "   luac"
 	@echo "   timer"
 	@echo ""
 	@echo "For more information, see http://industriousone.com/premake/quick-start"
