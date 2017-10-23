@@ -23,44 +23,66 @@ you will get timer dynamic library at bin path.
 **call timer:Update() in your main loop**
 
 ```lua
-require 'timer.c'
+package.cpath = "./?.dll;./?.so"
+
+require "timer.c"
 -- 一般一个lua state 只需要一个全局的 timer对象
-timer = Timer.new() --创建timer对象
+tmr = timer.new() --创建timer对象
 
 --example 一秒后超时的计时器
-    timer:ExpiredOnce(1000, function()
-        print("timer expired")
-    end)
+tmr:expired_once(
+    1000,
+    function()
+        print("ExpiredOnce timer expired")
+    end
+)
+
+local ntimes = 0
 
 --example 一个超时10次的计时器 第二个参数是执行次数
-    timer:Repeat(1000,10,function()
-        print("timer expired")
-    end)
+tmr:repeated(
+    1000,
+    10,
+    function()
+        ntimes = ntimes + 1
+        print("Repeat 10 times timer expired", ntimes)
+    end
+)
 
 --example 一个永远执行的计时器 -1 代表不限次数
-    timer:Repeat(1000,-1,function()
-        print("timer expired")
-    end)
+tmr:repeated(
+    1000,
+    -1,
+    function()
+        print("Repeat timer expired")
+    end
+)
 
 --example 这个计时器执行一次后就会被移除
-    local timerID = 0
-    timerID = timer:Repeat(1000,-1,function()
-        print("timer expired")
-        timer:Remove(timerID)
-    end)
+local timerID = 0
+timerID =
+    tmr:repeated(
+    1000,
+    -1,
+    function()
+        tmr:remove(timerID)
+        print("remove timer")
+    end
+)
 
--- timer:StopAllTimer()暂停所有计时器
--- timer:StartAllTimer()暂停所有计时器
+while true do
+    tmr:update()
+end
 ```
 ** timer with coroutine **
 ```lua
-package.cpath = './?.dll;'
+package.cpath = "./?.dll;./?.so"
 
 require 'timer.c'
 require 'coroutine'
 require 'os'
 -- 一般一个lua state 只需要一个全局的 timer对象
-timer = Timer.new() --创建timer对象
+tmr = timer.new() --创建timer对象
 
 local function WaitSecond(sec)
     return {Event='timer',dura = sec}
@@ -74,7 +96,7 @@ local function StartCoroutine(f)
         local b,t = coroutine.resume(corou)
         if b then
             if t and t.Event and t.Event == 'timer' then
-                timer:ExpiredOnce(t.dura*1000,function()
+                tmr:expired_once(t.dura*1000,function()
                     schedule(corou)
                 end)
             end
@@ -88,6 +110,7 @@ local function co3()
     print("coroutine3 start",os.time())
     coroutine.yield(WaitSecond(5))
     print("coroutine3 5 second later",os.time())
+    print("coroutine3 end")
 end
 
 StartCoroutine(function()
@@ -95,6 +118,7 @@ StartCoroutine(function()
     coroutine.yield(WaitSecond(2))
     print("coroutine1 2 second later",os.time())
     StartCoroutine(co3)
+    print("coroutine1 end")
 end)
 
 StartCoroutine(function()
@@ -107,11 +131,13 @@ StartCoroutine(function()
     print("coroutine2 1 second later ",os.time())
     coroutine.yield(WaitSecond(1))
     print("coroutine2 1 second later ",os.time() )
+
+    print("coroutine2 end")
 end)
 
 print("main thread noblock")
 
 while true do
-    timer:Update()
+    tmr:update()
 end
 ```
