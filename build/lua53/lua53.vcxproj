@@ -108,6 +108,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ImportLibrary>..\..\bin\Debug\lua53.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST $(SolutionDir)\bin\Debug\$(TargetFileName)\ (xcopy /Q /E /Y /I $(SolutionDir)\bin\Debug\$(TargetFileName) $(SolutionDir)\example\ &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\bin\Debug\$(TargetFileName) $(SolutionDir)\example\ &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -124,6 +127,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ImportLibrary>..\..\bin\Debug\lua53.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST $(SolutionDir)\bin\Debug\$(TargetFileName)\ (xcopy /Q /E /Y /I $(SolutionDir)\bin\Debug\$(TargetFileName) $(SolutionDir)\example\ &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\bin\Debug\$(TargetFileName) $(SolutionDir)\example\ &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -145,6 +151,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <ImportLibrary>..\..\bin\Release\lua53.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST $(SolutionDir)\bin\Release\$(TargetFileName)\ (xcopy /Q /E /Y /I $(SolutionDir)\bin\Release\$(TargetFileName) $(SolutionDir)\example\ &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\bin\Release\$(TargetFileName) $(SolutionDir)\example\ &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -166,6 +175,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <ImportLibrary>..\..\bin\Release\lua53.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST $(SolutionDir)\bin\Release\$(TargetFileName)\ (xcopy /Q /E /Y /I $(SolutionDir)\bin\Release\$(TargetFileName) $(SolutionDir)\example\ &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\bin\Release\$(TargetFileName) $(SolutionDir)\example\ &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\lua53\lapi.h" />
@@ -193,7 +205,6 @@
     <ClInclude Include="..\..\lua53\lundump.h" />
     <ClInclude Include="..\..\lua53\lvm.h" />
     <ClInclude Include="..\..\lua53\lzio.h" />
-    <ClInclude Include="..\..\timer\lua_timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\lua53\lapi.c" />

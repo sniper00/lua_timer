@@ -31,6 +31,8 @@ ifeq ($(config),debug_linux)
   define PRELINKCMDS
   endef
   define POSTBUILDCMDS
+	@echo Running postbuild commands
+	cp -rf ../../bin/Debug/timer.so ../../example/
   endef
 all: $(TARGETDIR) $(OBJDIR) prebuild prelink $(TARGET)
 	@:
@@ -58,6 +60,8 @@ ifeq ($(config),release_linux)
   define PRELINKCMDS
   endef
   define POSTBUILDCMDS
+	@echo Running postbuild commands
+	cp -rf ../../bin/Release/timer.so ../../example/
   endef
 all: $(TARGETDIR) $(OBJDIR) prebuild prelink $(TARGET)
 	@:
@@ -65,7 +69,7 @@ all: $(TARGETDIR) $(OBJDIR) prebuild prelink $(TARGET)
 endif
 
 OBJECTS := \
-	$(OBJDIR)/lua_timer.o \
+	$(OBJDIR)/ltimer.o \
 
 RESOURCES := \
 
@@ -123,7 +127,7 @@ $(GCH): $(PCH)
 	$(SILENT) $(CXX) -x c++-header $(ALL_CXXFLAGS) -o "$@" -MF "$(@:%.gch=%.d)" -c "$<"
 endif
 
-$(OBJDIR)/lua_timer.o: ../../timer/lua_timer.cpp
+$(OBJDIR)/ltimer.o: ../../timer/ltimer.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 

@@ -108,6 +108,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST $(SolutionDir)\bin\Debug\$(TargetFileName)\ (xcopy /Q /E /Y /I $(SolutionDir)\bin\Debug\$(TargetFileName) $(SolutionDir)\example\ &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\bin\Debug\$(TargetFileName) $(SolutionDir)\example\ &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -124,6 +127,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST $(SolutionDir)\bin\Debug\$(TargetFileName)\ (xcopy /Q /E /Y /I $(SolutionDir)\bin\Debug\$(TargetFileName) $(SolutionDir)\example\ &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\bin\Debug\$(TargetFileName) $(SolutionDir)\example\ &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -145,6 +151,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST $(SolutionDir)\bin\Release\$(TargetFileName)\ (xcopy /Q /E /Y /I $(SolutionDir)\bin\Release\$(TargetFileName) $(SolutionDir)\example\ &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\bin\Release\$(TargetFileName) $(SolutionDir)\example\ &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -166,6 +175,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST $(SolutionDir)\bin\Release\$(TargetFileName)\ (xcopy /Q /E /Y /I $(SolutionDir)\bin\Release\$(TargetFileName) $(SolutionDir)\example\ &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\bin\Release\$(TargetFileName) $(SolutionDir)\example\ &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\lua53\lua.c" />

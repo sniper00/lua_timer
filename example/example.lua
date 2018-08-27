@@ -1,12 +1,11 @@
 package.cpath = "./?.dll;./?.so"
-
-require "timer.c"
--- 一般一个lua state 只需要一个全局的 timer对象
-tmr = timer.new() --创建timer对象
+ 
+local timer = require "timer"
 
 --example 一秒后超时的计时器
-tmr:expired_once(
+timer.repeated(
     1000,
+    1,
     function()
         print("ExpiredOnce timer expired")
     end
@@ -15,7 +14,7 @@ tmr:expired_once(
 local ntimes = 0
 
 --example 一个超时10次的计时器 第二个参数是执行次数
-tmr:repeated(
+timer.repeated(
     1000,
     10,
     function()
@@ -25,7 +24,7 @@ tmr:repeated(
 )
 
 --example 一个永远执行的计时器 -1 代表不限次数
-tmr:repeated(
+timer.repeated(
     1000,
     -1,
     function()
@@ -35,16 +34,15 @@ tmr:repeated(
 
 --example 这个计时器执行一次后就会被移除
 local timerID = 0
-timerID =
-    tmr:repeated(
+timerID = timer.repeated(
     1000,
     -1,
     function()
-        tmr:remove(timerID)
-        print("remove timer")
+        timer.remove(timerID)
+        print("remove timer",timerID)
     end
 )
 
 while true do
-    tmr:update()
+    timer.update()
 end

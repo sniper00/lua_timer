@@ -31,6 +31,8 @@ ifeq ($(config),debug_linux)
   define PRELINKCMDS
   endef
   define POSTBUILDCMDS
+	@echo Running postbuild commands
+	cp -rf ../../bin/Debug/lua ../../example/
   endef
 all: $(TARGETDIR) $(OBJDIR) prebuild prelink $(TARGET)
 	@:
@@ -58,6 +60,8 @@ ifeq ($(config),release_linux)
   define PRELINKCMDS
   endef
   define POSTBUILDCMDS
+	@echo Running postbuild commands
+	cp -rf ../../bin/Release/lua ../../example/
   endef
 all: $(TARGETDIR) $(OBJDIR) prebuild prelink $(TARGET)
 	@:
