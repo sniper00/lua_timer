@@ -176,6 +176,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\timer\lua_timer.hpp" />
     <ClInclude Include="..\..\timer\timer.hpp" />
   </ItemGroup>
   <ItemGroup>

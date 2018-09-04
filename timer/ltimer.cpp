@@ -4,7 +4,7 @@
 #include <lua.hpp>
 #include <stdlib.h>
 #include <string.h>
-#include "timer.hpp"
+#include "lua_timer.hpp"
 
 #define METANAME "ltimer"
 
@@ -21,7 +21,7 @@ traceback(lua_State *L) {
 
 struct timer_box
 {
-	moon::timer*  timer = nullptr;
+	moon::lua_timer*  timer = nullptr;
 };
 
 static int lrelease(lua_State *L)
@@ -74,7 +74,7 @@ static int ltimer_set_on_timer_cb(lua_State *L)
 	static const char* flag = "ltimer_set_on_timer_cb";
 	luaL_checktype(L, -1, LUA_TFUNCTION);
 	lua_rawsetp(L, LUA_REGISTRYINDEX, flag);// LUA_REGISTRYINDEX table[cb]=function
-	b->timer->set_on_timer([L](moon::timerid_t tid) {
+	b->timer->set_on_timer([L](moon::timer_id_t tid) {
 		lua_pushcfunction(L, traceback);
 		lua_rawgetp(L, LUA_REGISTRYINDEX, flag);//get lua function
 		lua_pushinteger(L, tid);
@@ -100,7 +100,7 @@ static int ltimer_set_remove_cb(lua_State *L)
 	static const char* flag = "ltimer_set_remove_cb";
 	luaL_checktype(L, -1, LUA_TFUNCTION);
 	lua_rawsetp(L, LUA_REGISTRYINDEX, flag);// LUA_REGISTRYINDEX table[cb]=function
-	b->timer->set_remove_timer([L](moon::timerid_t tid) {
+	b->timer->set_remove_timer([L](moon::timer_id_t tid) {
 		lua_pushcfunction(L, traceback);
 		lua_rawgetp(L, LUA_REGISTRYINDEX, flag);//get lua function
 		lua_pushinteger(L, tid);
@@ -120,7 +120,7 @@ static int ltimer_set_remove_cb(lua_State *L)
 
 static int ltimer_create(lua_State *L)
 {
-	moon::timer* timer = new moon::timer;
+	moon::lua_timer* timer = new moon::lua_timer;
 	timer_box* b = reinterpret_cast<timer_box*>(lua_newuserdata(L, sizeof(*b)));
 	b->timer = timer;
 	if (luaL_newmetatable(L, METANAME))//mt
