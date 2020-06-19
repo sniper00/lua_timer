@@ -3,12 +3,16 @@ local timers = {}
 local tbinsert = table.insert
 local tbremove = table.remove
 local ipairs = ipairs
-local clock = os.clock
+local xpcall = xpcall
+local traceback = debug.traceback
 
 local co_create = coroutine.create
 local co_running = coroutine.running
 local co_resume = coroutine.resume
 local co_yield = coroutine.yield
+
+---you can replace this with your clock function
+local clock = os.clock
 
 local function insert_timer(sec, fn)
     local expiretime = clock() + sec
@@ -29,7 +33,7 @@ local co_pool = setmetatable({}, {__mode = "kv"})
 local function coresume(co, ...)
     local ok, err = co_resume(co, ...)
     if not ok then
-        error(debug.traceback(co, err))
+        error(traceback(co, err))
     end
     return ok, err
 end
@@ -57,20 +61,24 @@ function M.async(fn)
     return co
 end
 
-function M.timeout(sec, fn)
-    return insert_timer(sec, fn)
+---@param seconds integer @duration in seconds，decimal part means millseconds
+---@param fn function @ timeout callback
+function M.timeout(seconds, fn)
+    return insert_timer(seconds, fn)
 end
 
-function M.sleep(sec)
+---coroutine style
+---@param seconds integer @duration in seconds，decimal part means millseconds
+function M.sleep(seconds)
     local co = co_running()
-    insert_timer(sec, function()
+    insert_timer(seconds, function()
         co_resume(co)
     end)
     return co_yield()
 end
 
-function M.remove(timer)
-    timer.remove = true
+function M.remove(ctx)
+    ctx.remove = true
 end
 
 function M.update()
@@ -79,7 +87,7 @@ function M.update()
         if timer.expiretime <= clock() then
             tbremove(timers,1)
             if not timer.remove then
-                local ok, err = xpcall(timer.fn, debug.traceback)
+                local ok, err = xpcall(timer.fn, traceback)
                 if not ok then
                     print("timer error:", err)
                 end

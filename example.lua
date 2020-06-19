@@ -1,4 +1,3 @@
-local os = require ('os')
 local timer = require ('timer')
 
 local function co3()
