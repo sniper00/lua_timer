@@ -1,12 +1,3 @@
-# lua_timer
-Pure lua implements timer ,support coroutine(with coroutine pool optimized)
-
-
-# Use
-
-**call timer.update() in your framework's main loop/update**
-
-```lua
 local os = require ('os')
 local timer = require ('timer')
 
@@ -52,9 +43,8 @@ end)
 timer.remove(ctx)
 
 print("main thread noblock")
-
+--replace this while loop code, use your framework's update
 while true do
     timer.update()
 end
 
-```
