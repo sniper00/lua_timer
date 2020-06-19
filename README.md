@@ -4,7 +4,7 @@ Pure lua implements timer ,support coroutine(with coroutine pool optimized)
 
 # Use
 
-**call timer.update() in your framework's main loop/update**
+**Call timer.update() in your framework's main loop/update**
 
 ```lua
 local os = require ('os')
